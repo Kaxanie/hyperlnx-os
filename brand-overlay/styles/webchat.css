@@ -1,0 +1,18 @@
+:root {
+  --hl-primary: #00FF41;        /* Terminal green */
+  --hl-bg: #0a0a0a;             /* Near black */
+  --hl-surface: #111111;
+  --hl-border: #1a1a1a;
+  --hl-text: #e0e0e0;
+  --hl-text-muted: #666666;
+  --hl-accent: #00FF41;
+  --hl-font-mono: "JetBrains Mono", "Fira Code", monospace;
+  --hl-font-sans: "Inter", system-ui, sans-serif;
+}
+/* Override OpenClaw webchat colors with HyperLnx brand */
+body { background: var(--hl-bg); color: var(--hl-text); font-family: var(--hl-font-sans); }
+.chat-bubble-assistant { background: var(--hl-surface); border: 1px solid var(--hl-border); }
+.chat-bubble-user { background: #001a00; border: 1px solid #003300; }
+.send-button { background: var(--hl-primary); color: #000; }
+.chat-input { background: var(--hl-surface); border: 1px solid var(--hl-border); color: var(--hl-text); }
+code, pre { font-family: var(--hl-font-mono); color: var(--hl-primary); }
