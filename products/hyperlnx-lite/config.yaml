@@ -1,0 +1,29 @@
+product: hyperlnx-lite
+display_name: "HyperLnx Lite"
+description: "Lightweight AI — photo analysis + web research only"
+tier: lite
+
+persona:
+  inherits: ../../brand-overlay/SOUL.md
+  name: "HyperLnx Assistant"
+  address_form: null
+  stripped: true
+  focus: research_and_photo
+
+skills_enabled:
+  - web-research
+  - photo-analysis
+
+skills_disabled:
+  - audit-pipeline
+  - notion-writer
+  - social-audit
+  - sam-gov-monitor
+  - github
+
+channels:
+  primary: telegram
+
+autonomy_tier: tier0
+pricing: subscription
+pricing_model: "$29/month"
