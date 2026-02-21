@@ -1,0 +1,29 @@
+product: hyperlnx-audit
+display_name: "HyperLnx Audit"
+description: "Business audit pipeline — scrape, analyze, report to Notion"
+tier: audit
+
+persona:
+  inherits: ../../brand-overlay/SOUL.md
+  name: "HyperLnx Audit Agent"
+  address_form: null
+  stripped: true
+  focus: audit_only
+
+skills_enabled:
+  - audit-pipeline
+  - notion-writer
+  - social-audit
+  - web-research
+
+skills_disabled:
+  - sam-gov-monitor
+  - github
+  - photo-analysis
+
+channels:
+  primary: telegram
+
+autonomy_tier: tier1
+pricing: per-report
+pricing_model: "$49/report or $299/month unlimited"
