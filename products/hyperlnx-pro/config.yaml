@@ -1,0 +1,26 @@
+product: hyperlnx-pro
+display_name: "HyperLnx Pro"
+description: "Full AEGIS stack — complete autonomous intelligence system"
+tier: pro
+
+persona:
+  inherits: ../../brand-overlay/SOUL.md
+  name: A.E.G.I.S.
+  address_form: Sir
+
+skills_enabled:
+  - audit-pipeline
+  - notion-writer
+  - social-audit
+  - web-research
+  - photo-analysis
+  - sam-gov-monitor
+  - github
+  - all-mcp-servers
+
+channels:
+  primary: telegram
+  fallback: [signal, whatsapp]
+
+autonomy_tier: full
+pricing: internal
