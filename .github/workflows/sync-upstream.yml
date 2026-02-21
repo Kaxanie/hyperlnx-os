@@ -1,0 +1,50 @@
+name: Sync Upstream OpenClaw
+
+on:
+  schedule:
+    - cron: "0 6 * * 1"  # Every Monday at 6am UTC
+  workflow_dispatch:       # Manual trigger
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout HyperLnx OS
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Configure Git
+        run: |
+          git config user.name "HyperLnx Patcher"
+          git config user.email "patch@hyperlnx.com"
+
+      - name: Add upstream remote
+        run: git remote add upstream https://github.com/openclaw/openclaw.git
+
+      - name: Fetch upstream
+        run: git fetch upstream
+
+      - name: Check for upstream changes
+        id: check
+        run: |
+          CHANGES=$(git log HEAD..upstream/main --oneline | wc -l)
+          echo "changes=$CHANGES" >> $GITHUB_OUTPUT
+          echo "Upstream has $CHANGES new commits"
+
+      - name: Run patch script
+        if: steps.check.outputs.changes > 0
+        run: bash patch.sh
+
+      - name: Push patched branch
+        if: steps.check.outputs.changes > 0
+        run: git push origin main
+
+      - name: Create summary
+        run: |
+          echo "## Upstream Sync Summary" >> $GITHUB_STEP_SUMMARY
+          echo "- Upstream commits merged: ${{ steps.check.outputs.changes }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Brand overlay: Protected" >> $GITHUB_STEP_SUMMARY
+          echo "- Products: Protected" >> $GITHUB_STEP_SUMMARY
+          echo "- Skills: Protected" >> $GITHUB_STEP_SUMMARY
