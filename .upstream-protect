@@ -1,0 +1,8 @@
+# Directories protected from upstream OpenClaw patches
+# patch.sh reads this file and excludes these paths during merge
+brand-overlay/
+products/
+skills/
+.upstream-protect
+patch.sh
+README.md
